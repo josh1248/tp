@@ -14,7 +14,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.calendar.EdulogEdulogCalendar;
-import seedu.address.model.calendar.Lesson;
+import seedu.address.model.lesson.Lesson;
 
 public class AddLessonCommandTest {
 

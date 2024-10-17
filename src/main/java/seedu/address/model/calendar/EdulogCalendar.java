@@ -3,6 +3,7 @@ package seedu.address.model.calendar;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.ReadOnlyEdulogCalendar;
+import seedu.address.model.lesson.Lesson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,14 @@ public class EdulogCalendar implements ReadOnlyEdulogCalendar {
 
     public EdulogCalendar() {
         lessons = new ArrayList<>();
+    }
+
+
+    /**
+     * Creates an EdulogCalendar using Lessons in the {@code toBeCopied}
+     */
+    public EdulogCalendar(ReadOnlyEdulogCalendar toBeCopied) {
+        this.lessons = toBeCopied.getLessonList();
     }
 
     /**

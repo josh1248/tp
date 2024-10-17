@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.calendar.EdulogCalendar;
 import seedu.address.model.ReadOnlyEdulogCalendar;
-import seedu.address.model.calendar.Lesson;
+import seedu.address.model.lesson.Lesson;
 
 import java.util.ArrayList;
 import java.util.List;

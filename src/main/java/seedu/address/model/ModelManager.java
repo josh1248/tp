@@ -12,7 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.calendar.EdulogCalendar;
-import seedu.address.model.calendar.Lesson;
+import seedu.address.model.lesson.Lesson;
 import seedu.address.model.student.Student;
 
 /**

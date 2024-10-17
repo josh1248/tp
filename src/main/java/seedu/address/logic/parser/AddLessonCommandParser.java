@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddLessonCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.calendar.Lesson;
+import seedu.address.model.lesson.Lesson;
 
 /**
  * Parses input arguments and creates a new AddLessonCommand object
