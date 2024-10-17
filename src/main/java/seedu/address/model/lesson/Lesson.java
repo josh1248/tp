@@ -246,16 +246,9 @@ public class Lesson {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-<<<<<<< HEAD
             .add("description", description)
             .add("From", startDay + " " + getFormattedStartTime())
             .add("To", startDay.plus(spansTwoDays() ? 1 : 0) + " " + getFormattedEndTime())
             .toString();
-=======
-                .add("description", description)
-                .add("From: ", startDay + " " + getFormattedStartTime())
-                .add("To: ", startDay.plus(spansTwoDays() ? 1 : 0) + " " + getFormattedEndTime())
-                .toString();
->>>>>>> parent of 53519270 (Fix faulty json encoding of lesson times)
     }
 }
