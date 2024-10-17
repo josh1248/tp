@@ -35,6 +35,8 @@ public interface Model {
      */
     void setGuiSettings(GuiSettings guiSettings);
 
+    // Address Book related commands ===============================================================================
+
     /**
      * Returns the user prefs' address book file path.
      */
@@ -76,6 +78,26 @@ public interface Model {
      * The student identity of {@code editedStudent} must not be the same as another existing student in EduLog.
      */
     void setStudent(Student target, Student editedStudent);
+
+    // Edulog Calendar related commands ===============================================================================
+
+    /**
+     * Returns the user prefs' edulog calendar file path.
+     */
+    Path getEdulogCalendarFilePath();
+
+    /**
+     * Sets the user prefs' edulog calendar file path.
+     */
+    void setEdulogCalendarFilePath(Path edulogCalendarFilePath);
+
+    /**
+     * Replaces edulog calendar data with the data in {@code edulogCalendar}.
+     */
+    void setEdulogCalendar(ReadOnlyEdulogCalendar edulogCalendar);
+
+    /** Returns the edulog calendar */
+    ReadOnlyEdulogCalendar getEdulogCalendar();
 
     /**
      * Returns true if a lesson with the same description as {@code lesson} exists in the calendar.

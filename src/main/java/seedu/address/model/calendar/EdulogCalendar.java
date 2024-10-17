@@ -28,6 +28,13 @@ public class EdulogCalendar implements ReadOnlyEdulogCalendar {
     }
 
     /**
+     * Modifies an existing EdulogCalendar using Lessons in the {@code toBeCopied}
+     */
+    public void setEdulogCalendar(ReadOnlyEdulogCalendar toBeCopied) {
+        this.lessons = toBeCopied.getLessonList();
+    }
+
+    /**
      * Add a new lesson to Calendar
      */
     public void addLesson(Lesson lesson) {

@@ -40,7 +40,7 @@ public class DeleteLessonCommand extends Command {
         Lesson lessonToDelete = model.findLesson(description);
         model.removeLesson(lessonToDelete);
 
-        return new CommandResult(String.format(MESSAGE_DELETE_STUDENT_SUCCESS, lessonToDelete));
+        return new CommandResult(String.format(MESSAGE_DELETE_STUDENT_SUCCESS, lessonToDelete), false, false, true);
     }
 
     @Override

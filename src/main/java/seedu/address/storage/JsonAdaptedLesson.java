@@ -7,9 +7,6 @@ import seedu.address.model.lesson.Lesson;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Jackson-friendly version of {@link Lesson}.

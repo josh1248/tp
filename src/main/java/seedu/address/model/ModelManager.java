@@ -30,7 +30,8 @@ public class ModelManager implements Model {
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs, EdulogCalendar edulogCalendar) {
+    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs,
+                        ReadOnlyEdulogCalendar edulogCalendar) {
         requireAllNonNull(addressBook, userPrefs);
 
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
@@ -80,6 +81,17 @@ public class ModelManager implements Model {
         userPrefs.setAddressBookFilePath(addressBookFilePath);
     }
 
+    @Override
+    public Path getEdulogCalendarFilePath() {
+        return userPrefs.getEdulogCalendarFilePath();
+    }
+
+    @Override
+    public void setEdulogCalendarFilePath(Path edulogCalendarFilePath) {
+        requireNonNull(edulogCalendarFilePath);
+        userPrefs.setEdulogCalendarFilePath(edulogCalendarFilePath);
+    }
+
     //=========== AddressBook ================================================================================
 
     @Override
@@ -117,6 +129,16 @@ public class ModelManager implements Model {
     }
 
     //=========== Calendar with Lessons ================================================================================
+
+    @Override
+    public void setEdulogCalendar(ReadOnlyEdulogCalendar edulogCalendar) {
+        this.edulogCalendar.setEdulogCalendar(edulogCalendar);
+    }
+
+    @Override
+    public ReadOnlyEdulogCalendar getEdulogCalendar() {
+        return edulogCalendar;
+    }
 
     @Override
     public boolean hasLesson(Lesson lesson) {
