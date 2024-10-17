@@ -49,7 +49,7 @@ public class EdulogCalendar implements ReadOnlyEdulogCalendar {
     }
 
     /**
-     * Find a lesson in the calendar based on its description
+     * Finds a lesson in the calendar based on its description
      */
     public Lesson findLesson(String description) {
         return lessons.stream()
