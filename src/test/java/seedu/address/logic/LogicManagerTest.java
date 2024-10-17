@@ -26,10 +26,12 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyEdulogCalendar;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.calendar.EdulogCalendar;
 import seedu.address.model.student.Student;
 import seedu.address.storage.JsonAddressBookStorage;
+import seedu.address.storage.JsonEdulogCalendarStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.StorageManager;
 import seedu.address.testutil.StudentBuilder;
@@ -49,7 +51,9 @@ public class LogicManagerTest {
         JsonAddressBookStorage addressBookStorage =
             new JsonAddressBookStorage(temporaryFolder.resolve("addressBook.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        JsonEdulogCalendarStorage edulogCalendarStorage =
+            new JsonEdulogCalendarStorage(temporaryFolder.resolve("edulogcalendar.json"));
+        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage, edulogCalendarStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -166,7 +170,15 @@ public class LogicManagerTest {
 
         JsonUserPrefsStorage userPrefsStorage =
             new JsonUserPrefsStorage(temporaryFolder.resolve("ExceptionUserPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+
+        JsonEdulogCalendarStorage edulogCalendarStorage = new JsonEdulogCalendarStorage(prefPath) {
+            @Override
+            public void saveEdulogCalendar(ReadOnlyEdulogCalendar edulogCalendar) throws IOException {
+                throw e;
+            }
+        };
+
+        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage, edulogCalendarStorage);
 
         logic = new LogicManager(model, storage);
 
