@@ -24,7 +24,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.calendar.EdulogCalendar;
+import seedu.address.model.calendar.EdulogEdulogCalendar;
 import seedu.address.model.student.Student;
 import seedu.address.testutil.EditStudentDescriptorBuilder;
 import seedu.address.testutil.StudentBuilder;
@@ -34,7 +34,7 @@ import seedu.address.testutil.StudentBuilder;
  */
 public class EditCommandTest {
 
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new EdulogCalendar());
+    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new EdulogEdulogCalendar());
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
@@ -46,7 +46,7 @@ public class EditCommandTest {
             Messages.format(editedStudent));
 
         Model expectedModel = new ModelManager(
-                new AddressBook(model.getAddressBook()), new UserPrefs(), new EdulogCalendar());
+                new AddressBook(model.getAddressBook()), new UserPrefs(), new EdulogEdulogCalendar());
         expectedModel.setStudent(model.getFilteredStudentList().get(0), editedStudent);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -69,7 +69,7 @@ public class EditCommandTest {
             Messages.format(editedStudent));
 
         Model expectedModel = new ModelManager(
-                new AddressBook(model.getAddressBook()), new UserPrefs(), new EdulogCalendar());
+                new AddressBook(model.getAddressBook()), new UserPrefs(), new EdulogEdulogCalendar());
         expectedModel.setStudent(lastStudent, editedStudent);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
@@ -84,7 +84,7 @@ public class EditCommandTest {
             Messages.format(editedStudent));
 
         Model expectedModel = new ModelManager(
-                new AddressBook(model.getAddressBook()), new UserPrefs(), new EdulogCalendar());
+                new AddressBook(model.getAddressBook()), new UserPrefs(), new EdulogEdulogCalendar());
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
@@ -102,7 +102,7 @@ public class EditCommandTest {
             Messages.format(editedStudent));
 
         Model expectedModel = new ModelManager(
-                new AddressBook(model.getAddressBook()), new UserPrefs(), new EdulogCalendar());
+                new AddressBook(model.getAddressBook()), new UserPrefs(), new EdulogEdulogCalendar());
         expectedModel.setStudent(model.getFilteredStudentList().get(0), editedStudent);
 
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);

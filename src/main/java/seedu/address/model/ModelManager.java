@@ -37,9 +37,7 @@ public class ModelManager implements Model {
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        // Simple version - do without a persistent calendar first.
-        // TODO: Persistent storage for MVP release.
-        this.edulogCalendar = new EdulogCalendar();
+        this.edulogCalendar = new EdulogCalendar(edulogCalendar);
         filteredStudents = new FilteredList<>(this.addressBook.getStudentList());
     }
 
@@ -118,7 +116,7 @@ public class ModelManager implements Model {
         addressBook.setStudent(target, editedStudent);
     }
 
-    //=========== AddressBook ================================================================================
+    //=========== Calendar with Lessons ================================================================================
 
     @Override
     public boolean hasLesson(Lesson lesson) {

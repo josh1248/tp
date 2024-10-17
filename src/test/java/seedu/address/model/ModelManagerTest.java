@@ -15,7 +15,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.calendar.EdulogCalendar;
+import seedu.address.model.calendar.EdulogEdulogCalendar;
 import seedu.address.model.student.NameContainsKeywordsPredicate;
 import seedu.address.testutil.AddressBookBuilder;
 
@@ -99,7 +99,7 @@ public class ModelManagerTest {
         AddressBook addressBook = new AddressBookBuilder().withStudent(ALICE).withStudent(BENSON).build();
         AddressBook differentAddressBook = new AddressBook();
         UserPrefs userPrefs = new UserPrefs();
-        EdulogCalendar edulogCalendar = new EdulogCalendar();
+        EdulogEdulogCalendar edulogCalendar = new EdulogEdulogCalendar();
 
         // same values -> returns true
         modelManager = new ModelManager(addressBook, userPrefs, edulogCalendar);

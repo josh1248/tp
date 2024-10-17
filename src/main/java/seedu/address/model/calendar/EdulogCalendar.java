@@ -1,12 +1,16 @@
 package seedu.address.model.calendar;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import seedu.address.model.ReadOnlyEdulogCalendar;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Calendar class
  */
-public class EdulogCalendar {
+public class EdulogCalendar implements ReadOnlyEdulogCalendar {
     public static final int MAX_IDENTICAL_TIMING = 2;
     private List<Lesson> lessons;
 
@@ -54,5 +58,10 @@ public class EdulogCalendar {
      */
     public void removeLesson(Lesson lesson) {
         lessons.remove(lesson);
+    }
+
+    @Override
+    public ObservableList<Lesson> getLessonList() {
+        return FXCollections.observableArrayList(lessons);
     }
 }
