@@ -248,8 +248,8 @@ public class Lesson {
     public String toString() {
         return new ToStringBuilder(this)
                 .add("description", description)
-                .add("From: ", startDay + " " + getFormattedStartTime())
-                .add("To: ", startDay.plus(spansTwoDays() ? 1 : 0) + " " + getFormattedEndTime())
+                .add("From", startDay + " " + getFormattedStartTime())
+                .add("To", startDay.plus(spansTwoDays() ? 1 : 0) + " " + getFormattedEndTime())
                 .toString();
     }
 }
