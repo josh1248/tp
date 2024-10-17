@@ -39,8 +39,8 @@ class JsonAdaptedLesson {
     public JsonAdaptedLesson(Lesson source) {
         description = source.getDescription();
         startDay = source.getStartDay().toString();
-        startTime = source.getFormattedStartTime();
-        endTime = source.getFormattedEndTime();
+        startTime = source.getStartTime().toString();
+        endTime = source.getEndTime().toString();
     }
 
     /**
