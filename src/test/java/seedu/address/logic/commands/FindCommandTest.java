@@ -26,14 +26,15 @@ import seedu.address.model.student.NameContainsKeywordsPredicate;
  */
 public class FindCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new EdulogEdulogCalendar());
-    private Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new EdulogEdulogCalendar());
+    private Model expectedModel =
+        new ModelManager(getTypicalAddressBook(), new UserPrefs(), new EdulogEdulogCalendar());
 
     @Test
     public void equals() {
         NameContainsKeywordsPredicate firstPredicate =
-                new NameContainsKeywordsPredicate(Collections.singletonList("first"));
+            new NameContainsKeywordsPredicate(Collections.singletonList("first"));
         NameContainsKeywordsPredicate secondPredicate =
-                new NameContainsKeywordsPredicate(Collections.singletonList("second"));
+            new NameContainsKeywordsPredicate(Collections.singletonList("second"));
 
         FindCommand findFirstCommand = new FindCommand(firstPredicate);
         FindCommand findSecondCommand = new FindCommand(secondPredicate);

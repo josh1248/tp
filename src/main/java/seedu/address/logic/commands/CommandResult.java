@@ -13,13 +13,19 @@ public class CommandResult {
 
     private final String feedbackToUser;
 
-    /** Help information should be shown to the user. */
+    /**
+     * Help information should be shown to the user.
+     */
     private final boolean showHelp;
 
-    /** The application should exit. */
+    /**
+     * The application should exit.
+     */
     private final boolean exit;
 
-    /** Denotes if saving should be to the edulog calendar json file rather then to students. */
+    /**
+     * Denotes if saving should be to the edulog calendar json file rather then to students.
+     */
     private final boolean toCalendar;
 
     /**
@@ -69,9 +75,9 @@ public class CommandResult {
 
         CommandResult otherCommandResult = (CommandResult) other;
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
-                && showHelp == otherCommandResult.showHelp
-                && exit == otherCommandResult.exit
-                && toCalendar == otherCommandResult.toCalendar;
+            && showHelp == otherCommandResult.showHelp
+            && exit == otherCommandResult.exit
+            && toCalendar == otherCommandResult.toCalendar;
     }
 
     @Override
@@ -82,11 +88,11 @@ public class CommandResult {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("feedbackToUser", feedbackToUser)
-                .add("showHelp", showHelp)
-                .add("exit", exit)
-                .add("calendar command", toCalendar)
-                .toString();
+            .add("feedbackToUser", feedbackToUser)
+            .add("showHelp", showHelp)
+            .add("exit", exit)
+            .add("calendar command", toCalendar)
+            .toString();
     }
 
 }

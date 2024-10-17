@@ -1,12 +1,13 @@
 package seedu.address.storage;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.lesson.Lesson;
-
 import java.time.DayOfWeek;
 import java.time.LocalTime;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.lesson.Lesson;
 
 /**
  * Jackson-friendly version of {@link Lesson}.

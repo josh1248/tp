@@ -26,7 +26,7 @@ public class DeleteLessonCommandTest {
         DeleteLessonCommand command = new DeleteLessonCommand("Math");
         CommandResult result = command.execute(model);
         assertEquals(result.getFeedbackToUser(),
-                String.format(DeleteLessonCommand.MESSAGE_DELETE_STUDENT_SUCCESS, lesson));
+            String.format(DeleteLessonCommand.MESSAGE_DELETE_STUDENT_SUCCESS, lesson));
     }
 
     @Test

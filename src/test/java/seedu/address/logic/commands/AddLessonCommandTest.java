@@ -32,7 +32,7 @@ public class AddLessonCommandTest {
         AddLessonCommand command = new AddLessonCommand(validLesson);
         CommandResult result = command.execute(model);
         assertEquals(result.getFeedbackToUser(),
-                String.format(AddLessonCommand.MESSAGE_SUCCESS, validLesson));
+            String.format(AddLessonCommand.MESSAGE_SUCCESS, validLesson));
         assertTrue(model.hasLesson(validLesson));
     }
 
@@ -59,7 +59,7 @@ public class AddLessonCommandTest {
             AddLessonCommand command = new AddLessonCommand(lesson);
             CommandResult result = command.execute(model);
             assertEquals(result.getFeedbackToUser(),
-                    String.format(AddLessonCommand.MESSAGE_SUCCESS, lesson));
+                String.format(AddLessonCommand.MESSAGE_SUCCESS, lesson));
         }
 
         LocalTime endTime = LocalTime.of(13 + EdulogEdulogCalendar.MAX_IDENTICAL_TIMING, 0);

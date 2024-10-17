@@ -12,7 +12,9 @@ import seedu.address.model.student.Student;
  * The API of the Model component.
  */
 public interface Model {
-    /** {@code Predicate} that always evaluate to true */
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
     Predicate<Student> PREDICATE_SHOW_ALL_STUDENTS = unused -> true;
 
     /**
@@ -52,7 +54,9 @@ public interface Model {
      */
     void setAddressBook(ReadOnlyAddressBook addressBook);
 
-    /** Returns the AddressBook */
+    /**
+     * Returns the AddressBook
+     */
     ReadOnlyAddressBook getAddressBook();
 
     /**
@@ -96,7 +100,9 @@ public interface Model {
      */
     void setEdulogCalendar(ReadOnlyEdulogCalendar edulogCalendar);
 
-    /** Returns the edulog calendar */
+    /**
+     * Returns the edulog calendar
+     */
     ReadOnlyEdulogCalendar getEdulogCalendar();
 
     /**
@@ -127,12 +133,14 @@ public interface Model {
     boolean checkTimeslot(Lesson lesson);
 
 
-
-    /** Returns an unmodifiable view of the filtered student list */
+    /**
+     * Returns an unmodifiable view of the filtered student list
+     */
     ObservableList<Student> getFilteredStudentList();
 
     /**
      * Updates the filter of the filtered student list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredStudentList(Predicate<Student> predicate);

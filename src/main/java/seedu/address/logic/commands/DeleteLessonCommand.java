@@ -16,9 +16,9 @@ public class DeleteLessonCommand extends Command {
     public static final String COMMAND_WORD = "deletec";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the student identified by the description used in the displayed calendar.\n"
-            + "Parameters: STRING\n"
-            + "Example: " + COMMAND_WORD + " Secondary 4 Chemistry Class";
+        + ": Deletes the student identified by the description used in the displayed calendar.\n"
+        + "Parameters: STRING\n"
+        + "Example: " + COMMAND_WORD + " Secondary 4 Chemistry Class";
 
     public static final String MESSAGE_DELETE_STUDENT_SUCCESS = "Deleted Class: %1$s";
     public static final String MESSAGE_NONEXISTENT_LESSON = "This lesson does not exist in the calendar";
@@ -61,7 +61,7 @@ public class DeleteLessonCommand extends Command {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("toDelete", description)
-                .toString();
+            .add("toDelete", description)
+            .toString();
     }
 }

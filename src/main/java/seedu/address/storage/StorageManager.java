@@ -95,5 +95,6 @@ public class StorageManager implements Storage {
     @Override
     public void saveEdulogCalendar(ReadOnlyEdulogCalendar edulogCalendar) throws IOException {
         edulogCalendarStorage.saveEdulogCalendar(edulogCalendar);
-    };
+    }
+
 }

@@ -200,8 +200,8 @@ public class ModelManager implements Model {
 
         ModelManager otherModelManager = (ModelManager) other;
         return addressBook.equals(otherModelManager.addressBook)
-                && userPrefs.equals(otherModelManager.userPrefs)
-                && filteredStudents.equals(otherModelManager.filteredStudents);
+            && userPrefs.equals(otherModelManager.userPrefs)
+            && filteredStudents.equals(otherModelManager.filteredStudents);
     }
 
 }

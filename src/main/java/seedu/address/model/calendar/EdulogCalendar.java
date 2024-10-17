@@ -1,12 +1,12 @@
 package seedu.address.model.calendar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.ReadOnlyEdulogCalendar;
 import seedu.address.model.lesson.Lesson;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Calendar class
@@ -53,9 +53,9 @@ public class EdulogCalendar implements ReadOnlyEdulogCalendar {
      */
     public Lesson findLesson(String description) {
         return lessons.stream()
-                      .filter(lesson -> lesson.isDescription(description))
-                      .findFirst()
-                      .orElse(null);
+            .filter(lesson -> lesson.isDescription(description))
+            .findFirst()
+            .orElse(null);
     }
 
     /**

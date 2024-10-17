@@ -19,19 +19,19 @@ public class AddLessonCommand extends Command {
 
     public static final String COMMAND_WORD = "addc";
     public static final String OVERLOAD_IDENTICAL_TIMING =
-            "There are already " + EdulogCalendar.MAX_IDENTICAL_TIMING + " lessons with the same start and end time.";
+        "There are already " + EdulogCalendar.MAX_IDENTICAL_TIMING + " lessons with the same start and end time.";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a lesson to the calendar. "
-            + "Parameters: "
-            + PREFIX_DESCRIPTION + "DESCRIPTION "
-            + PREFIX_START_DAY + "DAY OF THE WEEK "
-            + PREFIX_START_TIME + "START TIME (24H FORMAT) "
-            + PREFIX_END_TIME + "END TIME (24H FORMAT)"
-            + "Example: " + COMMAND_WORD + " "
-            + PREFIX_DESCRIPTION + "Sec 4 Math Class "
-            + PREFIX_START_DAY + "Monday "
-            + PREFIX_START_TIME + "2230 "
-            + PREFIX_END_TIME + "0030 ";
+        + "Parameters: "
+        + PREFIX_DESCRIPTION + "DESCRIPTION "
+        + PREFIX_START_DAY + "DAY OF THE WEEK "
+        + PREFIX_START_TIME + "START TIME (24H FORMAT) "
+        + PREFIX_END_TIME + "END TIME (24H FORMAT)"
+        + "Example: " + COMMAND_WORD + " "
+        + PREFIX_DESCRIPTION + "Sec 4 Math Class "
+        + PREFIX_START_DAY + "Monday "
+        + PREFIX_START_TIME + "2230 "
+        + PREFIX_END_TIME + "0030 ";
 
     public static final String MESSAGE_SUCCESS = "New lesson added: %1$s";
     public static final String MESSAGE_DUPLICATE_LESSON = "This lesson already exists in the calendar";
@@ -80,7 +80,7 @@ public class AddLessonCommand extends Command {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("toAdd", toAdd)
-                .toString();
+            .add("toAdd", toAdd)
+            .toString();
     }
 }

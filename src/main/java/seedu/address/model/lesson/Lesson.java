@@ -6,13 +6,11 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
  * Lesson class, representing a weekly recurring time slot for a lesson.
@@ -26,21 +24,21 @@ public class Lesson {
         List.of("monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"));
 
     public static final String NO_SAME_TIME =
-            "Lessons cannot start and end at the same time.";
+        "Lessons cannot start and end at the same time.";
 
     public static final String INVALID_DAY_OF_WEEK =
-            "Day of the week must be spelt as "
+        "Day of the week must be spelt as "
             + "'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', or 'Sunday'"
             + "only (non case-sensitive).";
 
     public static final String DESCRIPTION_EMPTY =
-            "Lesson description cannot be empty.";
+        "Lesson description cannot be empty.";
 
     public static final String DESCRIPTION_TOO_LONG =
-            "Lesson description should be at most " + MAX_CHARACTER_LIMIT + " characters long (whitespace-inclusive).";
+        "Lesson description should be at most " + MAX_CHARACTER_LIMIT + " characters long (whitespace-inclusive).";
 
     public static final String NOT_24H_FORMAT =
-            "Times provided must be in 24-hour time format. Examples: 0000, 1027, 1830, 2215, 2359.";
+        "Times provided must be in 24-hour time format. Examples: 0000, 1027, 1830, 2215, 2359.";
 
 
     public static final DateTimeFormatter FORMAT_24H = DateTimeFormatter.ofPattern("HHmm");
@@ -150,6 +148,7 @@ public class Lesson {
     }
 
     // Processor methods. TODO: OOP-ize =========================================
+
     /**
      * Generates a DayOfWeek based on a String representation.
      * Callers are advised to use {@link #checkValidDayOfWeek(String)} first and handle abnormal use cases themselves.
@@ -213,7 +212,7 @@ public class Lesson {
      */
     public boolean isSameLesson(Lesson otherLesson) {
         return otherLesson != null
-                && otherLesson.description.equals(description);
+            && otherLesson.description.equals(description);
     }
 
     /**
@@ -233,9 +232,9 @@ public class Lesson {
 
         Lesson otherLesson = (Lesson) other;
         return description.equals(otherLesson.description)
-                && startDay.equals(otherLesson.startDay)
-                && startTime.equals(otherLesson.startTime)
-                && endTime.equals(otherLesson.endTime);
+            && startDay.equals(otherLesson.startDay)
+            && startTime.equals(otherLesson.startTime)
+            && endTime.equals(otherLesson.endTime);
     }
 
     @Override
@@ -247,9 +246,9 @@ public class Lesson {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("description", description)
-                .add("From", startDay + " " + getFormattedStartTime())
-                .add("To", startDay.plus(spansTwoDays() ? 1 : 0) + " " + getFormattedEndTime())
-                .toString();
+            .add("description", description)
+            .add("From", startDay + " " + getFormattedStartTime())
+            .add("To", startDay.plus(spansTwoDays() ? 1 : 0) + " " + getFormattedEndTime())
+            .toString();
     }
 }
