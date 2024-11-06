@@ -52,21 +52,19 @@ public class AddLessonCommandTest {
     @Test
     public void execute_overloadIdenticalTimingLesson_throwsCommandException() throws CommandException {
         String startDay = "Monday";
-        String startTime = "1200";
-        String endTime = "1300";
+        String startTime = "1000";
+        String endTime = "1330";
 
-        for (int i = 0; i < EdulogCalendar.MAX_SIMULTANEOUS_TIMING; i++) {
-            Lesson lesson = new Lesson(new Description("Math" + i),
-                new Day(startDay), new LessonTime(startTime), new LessonTime(endTime));
-            AddLessonCommand command = new AddLessonCommand(lesson);
-            CommandResult result = command.execute(model);
-            assertEquals(result.getFeedbackToUser(),
-                    String.format(AddLessonCommand.MESSAGE_SUCCESS, lesson));
-        }
+        Lesson lesson1 = new Lesson(new Description("Class X"),
+            new Day(startDay), new LessonTime(startTime), new LessonTime(endTime));
 
-        Lesson lesson = new Lesson(new Description("Math" + EdulogCalendar.MAX_SIMULTANEOUS_TIMING),
-            new Day("Monday"), new LessonTime(startTime), new LessonTime(endTime));
-        AddLessonCommand command = new AddLessonCommand(lesson);
-        assertCommandFailure(command, model, EdulogCalendar.OVERLOAD_SIMULTANEOUS_TIMING);
+        Lesson lesson2 = new Lesson(new Description("Class Y"),
+            new Day(startDay), new LessonTime(startTime), new LessonTime(endTime));
+
+        AddLessonCommand initialCommand = new AddLessonCommand(lesson1);
+        initialCommand.execute(model);
+
+        AddLessonCommand subsequentCommand = new AddLessonCommand(lesson2);
+        assertCommandFailure(subsequentCommand, model, EdulogCalendar.OVERLOAD_SIMULTANEOUS_TIMING);
     }
 }

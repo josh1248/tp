@@ -24,60 +24,60 @@ public class LessonTimeTest {
 
     @Test
     public void checkValidLessonTime() {
-        // Values in the morning
+        // EP: Values in the morning, shared with 12H format
         assertTrue(LessonTime.checkValidLessonTime("1000"));
         assertTrue(LessonTime.checkValidLessonTime("0511"));
         assertTrue(LessonTime.checkValidLessonTime("0159"));
 
-        // Values in the afternoon and evening
-        assertTrue(LessonTime.checkValidLessonTime("1230"));
+        // EP: Values in the afternoon and evening, unique to 24H format
+        assertTrue(LessonTime.checkValidLessonTime("1330"));
         assertTrue(LessonTime.checkValidLessonTime("2200"));
         assertTrue(LessonTime.checkValidLessonTime("2310"));
 
-        // Boundary values
+        // EP: Valid boundary values
         assertTrue(LessonTime.checkValidLessonTime("0000"));
         assertTrue(LessonTime.checkValidLessonTime("2359"));
 
-        // OOB hour and/or minute
-        assertFalse(LessonTime.checkValidLessonTime("2400"));
-        assertFalse(LessonTime.checkValidLessonTime("9930"));
-        assertFalse(LessonTime.checkValidLessonTime("0260"));
-        assertFalse(LessonTime.checkValidLessonTime("2199"));
-        assertFalse(LessonTime.checkValidLessonTime("2563"));
+        // EP: Out of bound, 4-character values
+        assertFalse(LessonTime.checkValidLessonTime("2400")); // hour boundary value
+        assertFalse(LessonTime.checkValidLessonTime("0260")); // minute boundary value
+        assertFalse(LessonTime.checkValidLessonTime("9900")); // invalid hour
+        assertFalse(LessonTime.checkValidLessonTime("1099")); // invalid minute
+        assertFalse(LessonTime.checkValidLessonTime("2460")); // both invalid
 
-        // Common alternative time formats
+        // EP: not a 4-character value
         assertFalse(LessonTime.checkValidLessonTime("21:00"));
-        assertFalse(LessonTime.checkValidLessonTime("11.00"));
         assertFalse(LessonTime.checkValidLessonTime("11-00"));
+        assertFalse(LessonTime.checkValidLessonTime("              "));
+        assertFalse(LessonTime.checkValidLessonTime("1000 "));
+
+        // EP: Letters in value
         assertFalse(LessonTime.checkValidLessonTime("12PM"));
-        assertFalse(LessonTime.checkValidLessonTime("930"));
 
-        // Letters
-        assertFalse(LessonTime.checkValidLessonTime("dwodqkoq"));
-
-        // null
+        // EP: null
         assertThrows(NullPointerException.class, () -> LessonTime.checkValidLessonTime(null));
     }
     @Test
     public void checkValidLessonTimes() {
-        // start time before end time
-        assertTrue(LessonTime.checkValidLessonTimes("1230", "1400"));
-        assertTrue(LessonTime.checkValidLessonTimes("2358", "2359"));
+        // EP: valid start time before end time
+        assertTrue(LessonTime.checkValidLessonTimes("1000", "1330"));
+        assertTrue(LessonTime.checkValidLessonTimes("0000", "2359"));
 
-        // start time after end time
-        assertTrue(LessonTime.checkValidLessonTimes("2200", "0000"));
+        // EP: valid start time after end time
+        assertTrue(LessonTime.checkValidLessonTimes("1330", "1000"));
+        assertTrue(LessonTime.checkValidLessonTimes("2359", "0000")); // double boundary values
 
-        // start time same as end time
+        // EP: invalid start time same as end time
         assertFalse(LessonTime.checkValidLessonTimes("2100", "2100"));
 
-        // one of lesson times are invalid
-        assertThrows(IllegalArgumentException.class, () -> LessonTime.checkValidLessonTimes("0260", "0430"));
-        assertThrows(IllegalArgumentException.class, () -> LessonTime.checkValidLessonTimes("0250", "430"));
+        // EP: 1 lesson time is invalid
+        assertThrows(IllegalArgumentException.class, () -> LessonTime.checkValidLessonTimes("2460", "1330"));
+        assertThrows(IllegalArgumentException.class, () -> LessonTime.checkValidLessonTimes("1000", "430"));
 
-        // both lesson times are invalid
-        assertThrows(IllegalArgumentException.class, () -> LessonTime.checkValidLessonTimes("0260", "430"));
+        // EP: both lesson times are invalid
+        assertThrows(IllegalArgumentException.class, () -> LessonTime.checkValidLessonTimes("2460", "430"));
 
-        // null
+        // EP: nulls
         assertThrows(NullPointerException.class, () -> LessonTime.checkValidLessonTimes("0100", null));
         assertThrows(NullPointerException.class, () -> LessonTime.checkValidLessonTimes(null, "1430"));
         assertThrows(NullPointerException.class, () -> LessonTime.checkValidLessonTimes(null, null));
@@ -85,17 +85,22 @@ public class LessonTimeTest {
 
     @Test
     public void spansTwoDays() {
-        // start time before end time
+        // EP: start time before end time
         assertFalse(LessonTime.spansTwoDays(
-            new LessonTime("1230"),
-            new LessonTime("1400")));
+            new LessonTime("1000"),
+            new LessonTime("1330")));
 
-        // start time after end time
+        // EP: start time after end time
         assertTrue(LessonTime.spansTwoDays(
-            new LessonTime("2230"),
-            new LessonTime("0000")));
+            new LessonTime("1330"),
+            new LessonTime("1000")));
 
-        // null
+        // EP: start time equal to end time
+        assertThrows(IllegalArgumentException.class, () -> LessonTime.spansTwoDays(
+            new LessonTime("1000"), new LessonTime("1000"))
+        );
+
+        // EP: nulls
         assertThrows(NullPointerException.class, () -> LessonTime.spansTwoDays(new LessonTime("1111"), null));
         assertThrows(NullPointerException.class, () -> LessonTime.spansTwoDays(null, new LessonTime("1111")));
         assertThrows(NullPointerException.class, () -> LessonTime.spansTwoDays(null, null));
@@ -103,35 +108,35 @@ public class LessonTimeTest {
 
     @Test
     public void contains() {
-        // contained fully
+        // EP: between time is fully contained, does not equal either border
         assertTrue(LessonTime.contains(
-            new LessonTime("1500"),
-            new LessonTime("2000"),
-            new LessonTime("1730")
+            new LessonTime("1000"),
+            new LessonTime("1330"),
+            new LessonTime("1230")
         ));
 
-        // left border
+        // EP: between time is contained, equalling left border
         assertTrue(LessonTime.contains(
-            new LessonTime("1700"),
-            new LessonTime("1850"),
-            new LessonTime("1700")
+            new LessonTime("1000"),
+            new LessonTime("1330"),
+            new LessonTime("1000")
         ));
 
-        // right border
+        // EP: between time is contained, equalling right border
         assertTrue(LessonTime.contains(
-            new LessonTime("0500"),
-            new LessonTime("2320"),
-            new LessonTime("2320")
+            new LessonTime("1000"),
+            new LessonTime("1330"),
+            new LessonTime("1330")
         ));
 
-        // both
+        // EP: between time is contained, equalling both borders
         assertTrue(LessonTime.contains(
-            new LessonTime("2359"),
-            new LessonTime("2359"),
-            new LessonTime("2359")
+            new LessonTime("1000"),
+            new LessonTime("1000"),
+            new LessonTime("1000")
         ));
 
-        // null
+        // EP: nulls
         assertThrows(NullPointerException.class, () -> LessonTime.contains(
             new LessonTime("2359"),
             null,

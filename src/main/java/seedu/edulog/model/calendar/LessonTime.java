@@ -85,6 +85,8 @@ public class LessonTime {
      */
     public static boolean spansTwoDays(LessonTime startTime, LessonTime endTime) {
         requireAllNonNull(startTime, endTime);
+        checkArgument(checkValidLessonTimes(startTime.getFormattedTime(), endTime.getFormattedTime()), NO_SAME_TIME);
+
         return endTime.time.isBefore(startTime.time);
     }
 
@@ -104,6 +106,12 @@ public class LessonTime {
      */
     public static boolean contains(LessonTime lower, LessonTime upper, LessonTime between) {
         requireAllNonNull(lower, upper, between);
+
+        /*
+         * Pre-condition assertion instead of exception makes sense here as this method is used for overlap checking
+         * from the developer, and should not be subjected to prior invalid user inputs.
+         */
+        assert lower.isBefore(upper) || lower.equals(upper);
 
         boolean boundedByLower = lower.isBefore(between) || lower.equals(between);
         boolean boundedByUpper = between.isBefore(upper) || between.equals(upper);
