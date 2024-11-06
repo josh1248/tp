@@ -109,8 +109,11 @@ public class Lesson {
         } else if (otherLesson.spansTwoDays()) {
             return otherLesson.hasOverlap(this);
         } else {
-            return LessonTime.contains(startTime, endTime, otherLesson.startTime)
+            boolean dayOverlap = startDay.equals(otherLesson.startDay);
+            boolean timeOverlap = LessonTime.contains(startTime, endTime, otherLesson.startTime)
                 || LessonTime.contains(startTime, endTime, otherLesson.endTime);
+
+            return dayOverlap && timeOverlap;
         }
     }
 
